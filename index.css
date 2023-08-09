@@ -1,0 +1,274 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+ul[role='list'],
+ol[role='list'] {
+    list-style: none;
+}
+
+
+/* Set core root defaults */
+html:focus-within {
+    scroll-behavior: smooth;
+}
+
+
+/* Set core body defaults */
+body {
+    min-height: 100vh;
+    text-rendering: optimizeSpeed;
+}
+
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+    text-decoration-skip-ink: auto;
+}
+
+
+a {
+    color: inherit;
+    text-decoration: inherit;
+}
+
+
+/* Make images easier to work with */
+img,
+picture {
+    max-width: 100%;
+    display: block;
+}
+
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+    font: inherit;
+}
+
+/* CUSTOM PROPERTIES */
+:root {
+    --font-dancing: 'Dancing Script', cursive;
+    --font-lobster: 'Lobster', cursive;
+    --font-size: 16px;
+    --font-w400: 400;
+    --font-w700: 700;
+    --body-background: #1C1C1C;
+    --accent-color: #7C3AED;
+    --accent-bg-color: #10B981;
+    --white: #fff;
+    --p-color: #D5D4D8;
+    --margin-bottom: 1.5rem;
+}
+
+/* Utility classes */
+.hidden {
+    display: none;
+}
+
+
+/* STYLING */
+
+/* Styling and animations of icons/buttons */
+i, button {
+    transition: 0.2s;
+}
+i:hover, button:hover {
+    cursor: pointer;
+    transform: scale(1.03);
+}
+i:active, button:active {
+    transform: scale(0.85);
+}
+.add-icon {
+    border-radius: 500px;
+    min-width: 30px;
+    min-height: 30px;
+    text-align: center;
+    border: 1px solid lightgrey;
+    padding: 6px;
+}
+.add-icon:active {
+    color: white;
+    background-color: var(--accent-color);
+}
+button {
+    display: block;
+    align-self: center;
+    width: 100%;
+    color: white;
+    background-color: var(--accent-color);
+    border: none;
+    border-radius: 2px;
+    padding: 10px 0;
+    margin-top: 20px;
+    font-weight: bold;
+    font-family: sans-serif;
+    font-size: 16px;
+}
+button:hover {
+    cursor: pointer;
+}
+
+/* hero section */
+.hero-section {
+    position: relative;
+    background-image: url("images/hero-img.jpg");
+    background-size: cover;
+    background-position-y: 75%;
+    background-position-x: 40%; 
+    text-align: left;
+    color: white;
+    height: 170px;
+    /* margin-bottom: var(--margin-bottom); */
+}
+
+.hero-text {
+    position: absolute;
+    top: 8px;
+    left: 32px;
+}
+
+.hero-text h1 {
+    font-family: var(--font-lobster);
+    letter-spacing: 2px;
+}
+
+.hero-text p {
+    font-family: var(--font-dancing);
+    letter-spacing: 0.3px;
+}
+
+
+/* menu section */
+.menu-list {
+    width: 80%;
+    margin: 0 auto;
+}
+.menu-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    padding: 22.5px 0;
+    border-bottom: 1px solid lightgrey;
+}
+.menu-item-img {
+    width: 50px;
+    height: fit-content;
+}
+.menu-item-text {
+    font-family: var(--font-dancing);
+    width: 100%;
+}
+.menu-item-text h3 {
+    font-size: 22px;
+}
+.ingredients {
+    color: gray;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+.price {
+    font-size: 14px;
+}
+
+
+/* Card details pop up */
+#card-details {
+    width: 85%;
+    max-width: 400px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 15px;
+    text-align: center;
+    background-color: white;
+    border: 1px solid red;
+    box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 6px;
+    z-index: 100;
+}
+#card-details h3 {
+    margin-bottom: 1.5rem;
+}
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+form input {
+    border: 1.5px solid lightgray;
+    border-radius: 2px;
+    padding: 10px;
+}
+
+
+/* Your order section */
+.order {
+    text-align: center;
+    /* border: 1px solid red; */
+    font-family: var(--font-dancing);
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    width: 85%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px 0;
+}
+.order h3 {
+    margin-bottom: 2rem;
+    font-size: 20px;
+    font-family: var(--font-lobster);
+}
+.order-list {
+    border-bottom: 2px solid black;
+    margin-bottom: 10px;
+}
+.order-list-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+.order-list-item p {
+    margin-left: auto;
+    margin-right: 10px;
+    font-size: 14px;
+}
+.total-price {
+    display: flex;
+    justify-content: space-between
+}
+
+
+/* order completed alert */
+#order-completed-alert {
+    background-color: rgba(124, 58, 237, 0.2);
+    color: var(--accent-color);
+    text-align: center;
+    font-size: 18px;
+    font-family: var(--font-dancing);
+    padding: 10px 20px;
+    width: 85%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+    z-index: 10; /* Make sure the overlay appears above other content */
+}

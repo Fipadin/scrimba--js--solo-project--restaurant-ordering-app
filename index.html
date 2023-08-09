@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Link CSS -->
+    <link rel="stylesheet" href="index.css">
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Lobster&display=swap" rel="stylesheet">
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Title -->
+    <title>Restaurant Ordering App</title>
+    </head>
+    <body>
+        <header class="hero-section">
+            <!-- <img src="images/hero-img.jpg" alt="Close up o a hamburger in a wooden table" class="hero-img"> -->
+            <div class="hero-text">
+                <h1>Jimmy's Diner</h1>
+                <p>The best burgers and pizzas in town.</p>
+            </div>
+        </header>
+        
+        <div class="hidden" id="card-details">
+            <h3>Enter card details</h3>
+            <form>
+                    <input type="text" name="name" placeholder="Enter your name" required/>
+                    <input type="number" name="card-number" placeholder="Enter card number" required/>
+                    <input type="number" name="card-cvv" placeholder="Enter CVV" maxlength="999" required/>
+                    <input type="date" name="card-issue-date" placeholder="Enter issue date" required/>
+                    <input type="date" name="card-exp-date" placeholder="Enter expiry date" required/>
+                    <button id="pay-btn">Pay</button>
+            </form>
+        </div>
+        <div class="modal-overlay hidden" id="modal-overlay"></div>
+        <h2 class="hidden" id="order-completed-alert">Thanks, James! Your order is on the way!</h2>
+    
+    <div id="app"></div>
+	<script src="index.js" type="module"></script>
+    </body>
+</html>
