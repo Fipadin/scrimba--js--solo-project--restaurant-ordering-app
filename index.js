@@ -1,6 +1,10 @@
 import { menuArray } from './data.js'
 import { formatIngredients } from './formatIngredients.js'
 
+const checkOutBtn = document.getElementById('checkout-btn')
+const modalOverlay = document.getElementById('modal-overlay')
+const orderCompletedAlert = document.getElementById('order-completed-alert')
+const cardDetailsAlert = document.getElementById('card-details')
 
 // Initializing the costumer's order
 let newOrder = []
@@ -19,11 +23,21 @@ document.addEventListener('click', function(e){
             askCardDetails()
         }
         else if (e.target.id === 'pay-btn')
-        payOrder(e)
+            payOrder(e)
 })
 
 function payOrder(e) {
-        e.preventDefault()
+    const form = document.getElementById('card-details-form')
+    if (form.checkValidity()) {
+        modalOverlay.classList.add('hidden')
+        cardDetailsAlert.classList.add('hidden')
+        orderCompletedAlert.classList.remove('hidden')
+        newOrder = []
+        render()
+    } else {
+        // Display validation messages or perform other actions
+        console.log('Fill the required information first.')
+    }
 }
 
 
@@ -85,17 +99,14 @@ function orderCheckout() {
 
 // Add click event listener for checkout button
 function askCardDetails() {
-    const checkOutBtn = document.getElementById('checkout-btn')
-    const modalOverlay = document.getElementById('modal-overlay')
-    const cardDetailsAlert = document.getElementById('card-details')
     
-        modalOverlay.classList.remove('hidden')
-        cardDetailsAlert.classList.remove('hidden')
+    modalOverlay.classList.remove('hidden')
+    cardDetailsAlert.classList.remove('hidden')
 
-        modalOverlay.addEventListener('click', (e) => {
-            // Prevent clicks on the overlay from propagating to underlying elements
-            e.stopPropagation()
-        })
+    modalOverlay.addEventListener('click', (e) => {
+        // Prevent clicks on the overlay from propagating to underlying elements
+        e.stopPropagation()
+    })
 }
 
 // Adding items to the order

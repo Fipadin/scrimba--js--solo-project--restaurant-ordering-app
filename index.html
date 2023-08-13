@@ -25,19 +25,22 @@
         
         <div class="hidden" id="card-details">
             <h3>Enter card details</h3>
-            <form>
+            <form id="card-details-form">
                     <input type="text" name="name" placeholder="Enter your name" required/>
                     <input type="number" name="card-number" placeholder="Enter card number" required/>
                     <input type="number" name="card-cvv" placeholder="Enter CVV" maxlength="999" required/>
                     <input type="date" name="card-issue-date" placeholder="Enter issue date" required/>
                     <input type="date" name="card-exp-date" placeholder="Enter expiry date" required/>
-                    <button id="pay-btn">Pay</button>
+                    <button type="button" id="pay-btn">Pay</button>
             </form>
         </div>
-        <div class="modal-overlay hidden" id="modal-overlay"></div>
-        <h2 class="hidden" id="order-completed-alert">Thanks, James! Your order is on the way!</h2>
+    
+    <div class="modal-overlay hidden" id="modal-overlay"></div>
     
     <div id="app"></div>
+    
+    <h2 class="hidden" id="order-completed-alert">Thanks, James! Your order is on the way!</h2>
+    
 	<script src="index.js" type="module"></script>
     </body>
 </html>
