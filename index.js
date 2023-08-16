@@ -26,6 +26,10 @@ document.addEventListener('click', function(e){
             payOrder(e)
 })
 
+window.addEventListener('beforeunload', () => {
+    saveOrderToLocalStorage()
+})
+
 function payOrder(e) {
     const form = document.getElementById('card-details-form')
     if (form.checkValidity()) {
@@ -33,10 +37,8 @@ function payOrder(e) {
         cardDetailsAlert.classList.add('hidden')
         orderCompletedAlert.classList.remove('hidden')
         newOrder = []
+        localStorage.removeItem('uncompletedOrder')
         render()
-    } else {
-        // Display validation messages or perform other actions
-        console.log('Fill the required information first.')
     }
 }
 
@@ -99,7 +101,6 @@ function orderCheckout() {
 
 // Add click event listener for checkout button
 function askCardDetails() {
-    
     modalOverlay.classList.remove('hidden')
     cardDetailsAlert.classList.remove('hidden')
 
@@ -115,12 +116,15 @@ function addItemToOrder(itemId) {
         newOrder[itemId] = { ...menuArray[itemId], amount: 0 }
     }
     newOrder[itemId].amount++
+    orderCompletedAlert.classList.add('hidden')
+    saveOrderToLocalStorage()
 }
 
 // Taking items out of the order
 function deleteItemFromOrder(itemId) {
     if (newOrder[itemId]) {
-        newOrder[itemId] = { ...menuArray[itemId], amount: 0 }
+        newOrder[itemId].amount = 0
+        saveOrderToLocalStorage()
     }
 }
 
@@ -146,9 +150,21 @@ function getMenuHtml() {
     return `<ul class="menu-list">${menuHtml}</ul>`
 }
 
-function render() {
-    const appElement = document.getElementById('app')
-    appElement.innerHTML = getMenuHtml() + orderCheckout()
+function saveOrderToLocalStorage() {
+    localStorage.setItem('uncompletedOrder', JSON.stringify(newOrder))
 }
+
+function loadOrderFromLocalStorage() {
+    const savedOrder = localStorage.getItem('uncompletedOrder')
+    if (savedOrder) {
+        newOrder = JSON.parse(savedOrder)
+    }
+}
+
+function render() {
+    loadOrderFromLocalStorage()
+    document.getElementById('app').innerHTML = getMenuHtml() + orderCheckout()
+}
+
 
 render()
